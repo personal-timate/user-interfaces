@@ -2,8 +2,18 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import {ManagementEnvironment} from "./environment-interface";
+import {KeycloakService} from "keycloak-angular";
+
+export const environment: ManagementEnvironment = {
   production: false,
+  authUrl: 'http://docker-machine:3005/',
+  coreServiceUrl: 'http://localhost:8095',
+  realm: 'timate',
+  clientId: 'timate:ui',
+  services: {
+    keycloak: KeycloakService,
+  },
 };
 
 /*
