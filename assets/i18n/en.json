@@ -1,1 +1,26 @@
-{}
+{
+  "APPLICATION": {
+    "GENERAL": {
+      "NAME": "Timate",
+      "SIDEBAR": {
+        "DASHBOARD": "Dashboard",
+        "STATISTICS": "Statistics",
+        "COMMITS": "Commits",
+        "TASKS": "Tasks",
+        "ACTIONS": {
+          "OPEN": {
+            "NAME": "Open",
+            "TOOLTIP": "Open sidebar"
+          },
+          "CLOSE": {
+            "NAME": "Close",
+            "TOOLTIP": "Close sidebar"
+          }
+        }
+      }
+    },
+    "DASHBOARD": {
+      "HEADER": "Dashboard"
+    }
+  }
+}

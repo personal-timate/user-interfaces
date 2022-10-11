@@ -10,7 +10,7 @@ import {CommonModule} from "@timate/common";
   ],
   exports: [
     CommonModule,
-    ReactiveComponentModule,
+    ReactiveComponentModule
   ],
 })
 export class SharedModule {}

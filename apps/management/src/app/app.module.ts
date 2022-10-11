@@ -1,24 +1,39 @@
-import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {ApplicationRef, DoBootstrap, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 import {KeycloakBearerInterceptor, KeycloakService} from 'keycloak-angular';
 import {Store, StoreModule} from '@ngrx/store';
-import { initApplication } from '../../../../libs/common/src/lib/init/store/actions/init.actions';
-import {HTTP_INTERCEPTORS, HttpClient} from "@angular/common/http";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {EffectsModule} from "@ngrx/effects";
-import {RootComponent} from "./global/root/root.component";
-import {globalEffects, globalReducers} from "./global/store";
+import {initApplication} from '../../../../libs/common/src/lib/init/store/actions/init.actions';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule,} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
+import {RootComponent} from './global/root/root.component';
+import {globalEffects, globalReducers} from './global/store';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+import {LayoutModule} from '@angular/cdk/layout';
 
-export const HttpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/');
+export const HttpLoaderFactory = (http: HttpClient) =>
+  new TranslateHttpLoader(http, './assets/i18n/');
 
 @NgModule({
-  declarations: [RootComponent],
+  declarations: [RootComponent, DashboardComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
@@ -32,6 +47,18 @@ export const HttpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(h
       maxAge: 50,
     }),
     EffectsModule.forRoot(globalEffects),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    RouterModule,
+    AppRoutingModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    LayoutModule,
   ],
   providers: [
     {
@@ -47,7 +74,7 @@ export const HttpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(h
       useClass: KeycloakBearerInterceptor,
       multi: true,
     },
-  ]
+  ],
 })
 export class AppModule implements DoBootstrap {
   constructor(

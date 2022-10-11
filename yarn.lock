@@ -170,6 +170,15 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/cdk@^14.2.4":
+  version "14.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-14.2.4.tgz#f858ff928206c24c1bbd38610444a5214990017d"
+  integrity sha512-5jngZcOyC2n9pRYec/D0iCw72QSnCkGYjtfgIlOK/FZYGhpOa34GMGObPuv4F0u7J2TEtbO6xIFsCFaK0FLIWQ==
+  dependencies:
+    tslib "^2.3.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~14.2.0":
   version "14.2.5"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.2.5.tgz#23cbb0721cf7cda4f5fc35f164b9f7d593edc45b"
@@ -244,6 +253,13 @@
   version "14.2.5"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-14.2.5.tgz#f5ccdbf83fb47c838867ad33a4b0da09598f6ca0"
   integrity sha512-YqbsCbCq470ve6+MGjeEf2I6L5LcBYALvh+S5XsZkfEQEjSYYC1ZE1ftq7clICrMOOoM4XSghq8b/eNtZoTJkg==
+
+"@angular/material@^14.2.4":
+  version "14.2.4"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-14.2.4.tgz#9a6902fbe06a93abcfa2152ea2300d09fed06305"
+  integrity sha512-vS7dyrnr2YpZPjFFmnSZ9W0dFpBQ5cWf4CH5AI0/KfbCGC+2ybkFZ61oMNBf1xXdoyf4Ob16Dm3xerKWFwJ4sQ==
+  dependencies:
+    tslib "^2.3.0"
 
 "@angular/platform-browser-dynamic@~14.2.0":
   version "14.2.5"
@@ -7351,6 +7367,13 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+ngx-device-detector@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-device-detector/-/ngx-device-detector-4.0.1.tgz#50cd5c88f805d78aac473be1fdae49186ada13bf"
+  integrity sha512-n0c9nOs7900r0pL/m4L0vaDvyf72xhKIC6bpr4BZYazWeRxankO1SqJZijqoMGxiUZnZAQqXkyhRkBIErgoKVg==
+  dependencies:
+    tslib "^2.0.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
@@ -7846,6 +7869,11 @@ parse5@6.0.1, parse5@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
 
 parseurl@~1.3.2, parseurl@~1.3.3:
   version "1.3.3"

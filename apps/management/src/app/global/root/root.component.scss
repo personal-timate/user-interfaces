@@ -1,0 +1,121 @@
+mat-toolbar {
+  height: 60px;
+
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+
+  .toolbar-icon-button {
+    margin-right: 10px;
+  }
+
+  .account-chip {
+    display: flex;
+    padding: 0 25px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    border-radius: 20px;
+    background-color: var(--accent-color);
+    align-items: center;
+
+    img {
+      float: left;
+      margin: 0 10px 0 -25px;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    mat-icon {
+      float: left;
+      margin: 0 10px 0 -5px;
+      height: 25px;
+      width: 25px;
+      font-size: 25px;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+    }
+
+  }
+}
+
+mat-sidenav-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  transition: width 0.5s ease-in 0.3s;
+
+  mat-sidenav {
+    transition: width 0.5s ease-in 0.3s;
+  }
+
+  .sidebar-toggle-closed {
+    margin-top: 15px;
+    padding-right: 5px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    mat-icon {
+      border-radius: 50%;
+      background-color: var(--primary-darker-color);
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+
+      :hover {
+        background-color: var(--accent-color);
+      }
+    }
+  }
+
+  .sidebar-toggle-opened:hover {
+    background-color: var(--accent-color);
+  }
+
+  .sidebar-toggle-opened {
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: var(--primary-darker-color);
+    width: 150px;
+
+    mat-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+
+    span {
+      padding-left: 5px;
+      font-size: 15px;
+    }
+  }
+
+  mat-nav-list {
+    padding-top: 50px;
+    transition: width 0.5s ease-in 0.3s;
+
+    mat-list-item:hover, mat-list-item.active {
+      background-color: var(--primary-color);
+    }
+  }
+}
+
+.page-content {
+  padding-left: 40px;
+  padding-right: 15px;
+  padding-top: 15px;
+  overflow-y: scroll;
+}
