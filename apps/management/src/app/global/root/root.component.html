@@ -1,73 +1,64 @@
-<mat-toolbar [color]="'primary'">
-  <ng-container *ngTemplateOutlet="toolbarInnerLeft"></ng-container>
-  <ng-container *ngTemplateOutlet="toolbarInnerRight"></ng-container>
-</mat-toolbar>
-<mat-sidenav-container autosize="true" [hasBackdrop]="smallScreen">
-  <mat-sidenav [disableClose]="!smallScreen" [(opened)]="opened" [mode]="smallScreen? 'over' : 'push'">
-    <div *ngIf="!smallScreen && !slimSidebar" class="sidebar-toggle-opened" (click)="slimSidebar = !slimSidebar">
-      <mat-icon>chevron_left</mat-icon>
-      <span>{{ 'APPLICATION.GENERAL.SIDEBAR.ACTIONS.CLOSE.NAME' | translate }}</span>
+<div [ngClass]="$theme | async">
+  <mat-toolbar  [color]="'primary'">
+    <ng-container *ngTemplateOutlet="toolbarInnerLeft"></ng-container>
+    <ng-container *ngTemplateOutlet="toolbarInnerRight"></ng-container>
+  </mat-toolbar>
+  <mat-sidenav-container autosize="true" [hasBackdrop]="smallScreen" [ngClass]="'text-' + ($theme | async)">
+    <mat-sidenav [disableClose]="!smallScreen" [(opened)]="opened" [mode]="smallScreen? 'over' : 'push'">
+      <div *ngIf="!smallScreen" class="sidenav-inner-toggle" (click)="slimSidebar = !slimSidebar">
+        <mat-icon [@rotate]="slimSidebar? 'default' : 'rotated'">{{ slimSidebar? 'chevron_left' : 'chevron_right' }}</mat-icon>
+        <span>{{ (slimSidebar ? 'APPLICATION.GENERAL.SIDEBAR.ACTIONS.CLOSE.NAME' : 'APPLICATION.GENERAL.SIDEBAR.ACTIONS.OPEN.NAME') | translate }}</span>
+      </div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let item of sidebarItems" routerLink="{{ item.subpath }}" routerLinkActive="active">
+          <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
+          <span *ngIf="slimSidebar || smallScreen">{{ item.name | translate }}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="page-content">
+      <router-outlet>
+        <ng-content></ng-content>
+      </router-outlet>
     </div>
-    <div *ngIf="!smallScreen && slimSidebar" class="sidebar-toggle-closed" (click)="slimSidebar = !slimSidebar">
-      <mat-icon>chevron_right</mat-icon>
+  </mat-sidenav-container>
+
+  <ng-template #toolbarInnerLeft>
+    <button *ngIf="smallScreen" (click)="opened = !opened" mat-icon-button class="example-icon" aria-label="icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ 'APPLICATION.GENERAL.NAME' | translate }}</span>
+  </ng-template>
+
+  <ng-template #toolbarInnerRight>
+    <div class="toolbar-spacer"></div>
+    <button class="toolbar-icon-button" mat-icon-button aria-label="Notifcation icon-button">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button class="account-chip-button" mat-button (click)="toolbarMenuVisible = !toolbarMenuVisible">
+      <mat-icon>person</mat-icon>
+      {{ (userDisplayName | async) || '' }}
+    </button>
+  </ng-template>
+
+  <div @inOutAnimation *ngIf="toolbarMenuVisible" class="toolbar-menu-container">
+    <div class="toolbar-menu-item" [ngClass]="'text-' + ($theme | async)">
+      <mat-icon>settings</mat-icon>
+      <span>{{ 'APPLICATION.GENERAL.ACTIONS.SETTINGS' | translate }}</span>
     </div>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let item of sidebarItems" routerLink="{{ item.subpath }}" routerLinkActive="active">
-        <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-        <span *ngIf="!slimSidebar || smallScreen">{{ item.name | translate }}</span>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-  <div class="page-content">
-    <router-outlet>
-      <ng-content></ng-content>
-    </router-outlet>
+    <div class="toolbar-menu-item" [ngClass]="'text-' + ($theme | async)">
+      <mat-icon>logout</mat-icon>
+      <span>{{ 'APPLICATION.GENERAL.ACTIONS.LOGOUT' | translate }}</span>
+    </div>
+    <div class="toolbar-menu-item" [ngClass]="'text-' + ($theme | async)">
+      <mat-icon>help-outline</mat-icon>
+      <span>{{ 'APPLICATION.GENERAL.ACTIONS.HELP' | translate }}</span>
+    </div>
+    <div class="toolbar-menu-item-theme-switch" [ngClass]="'text-' + ($theme | async)">
+      <mat-icon>light_mode</mat-icon>
+      <mat-slide-toggle (change)="changeTheme()"></mat-slide-toggle>
+      <mat-icon>dark_mode</mat-icon>
+    </div>
   </div>
-</mat-sidenav-container>
 
-<ng-template #sidenavSmallScreen>
-  <mat-sidenav [(opened)]="opened" mode="over">
-    <mat-nav-list>
-      <mat-list-item *ngFor="let item of sidebarItems" routerLink="{{ item.subpath }}" routerLinkActive="active">
-        <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-        <span>{{ item.name | translate }}</span>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-</ng-template>
-
-<ng-template #sidenavBigScreen>
-  <mat-sidenav [disableClose]="true" opened mode="push">
-    <div *ngIf="opened" class="sidebar-toggle-opened" (click)="opened = !opened">
-      <mat-icon>chevron_left</mat-icon>
-      <span>{{ 'APPLICATION.GENERAL.SIDEBAR.ACTIONS.CLOSE.NAME' | translate }}</span>
-    </div>
-    <div *ngIf="!opened" class="sidebar-toggle-closed" (click)="opened = !opened">
-      <mat-icon>chevron_right</mat-icon>
-    </div>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let item of sidebarItems" routerLink="{{ item.subpath }}" routerLinkActive="active">
-        <mat-icon mat-list-icon>{{ item.icon }}</mat-icon>
-        <span *ngIf="opened">{{ item.name | translate }}</span>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-</ng-template>
-
-<ng-template #toolbarInnerLeft>
-  <button *ngIf="smallScreen" (click)="opened = !opened" mat-icon-button class="example-icon" aria-label="icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>{{ 'APPLICATION.GENERAL.NAME' | translate }}</span>
-</ng-template>
-
-<ng-template #toolbarInnerRight>
-  <div class="toolbar-spacer"></div>
-  <button class="toolbar-icon-button" mat-icon-button aria-label="Notifcation icon-button">
-    <mat-icon>notifications</mat-icon>
-  </button>
-  <div class="account-chip" aria-label="account information with menu">
-    <mat-icon>person</mat-icon>
-    <span>{{ (userDisplayName | async) || '' }}</span>
-  </div>
-</ng-template>
+</div>

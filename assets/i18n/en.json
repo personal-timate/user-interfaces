@@ -2,11 +2,17 @@
   "APPLICATION": {
     "GENERAL": {
       "NAME": "Timate",
+      "ACTIONS": {
+        "LOGOUT": "Logout",
+        "SETTINGS": "Settings",
+        "HELP": "Help"
+      },
       "SIDEBAR": {
         "DASHBOARD": "Dashboard",
         "STATISTICS": "Statistics",
         "COMMITS": "Commits",
         "TASKS": "Tasks",
+        "SCHEDULE": "Schedule",
         "ACTIONS": {
           "OPEN": {
             "NAME": "Open",

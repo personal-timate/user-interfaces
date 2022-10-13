@@ -25,41 +25,43 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {LayoutModule} from '@angular/cdk/layout';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 export const HttpLoaderFactory = (http: HttpClient) =>
   new TranslateHttpLoader(http, './assets/i18n/');
 
 @NgModule({
   declarations: [RootComponent, DashboardComponent],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
-    StoreModule.forRoot(globalReducers),
-    StoreDevtoolsModule.instrument({
-      maxAge: 50,
-    }),
-    EffectsModule.forRoot(globalEffects),
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    RouterModule,
-    AppRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    LayoutModule,
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
+        StoreModule.forRoot(globalReducers),
+        StoreDevtoolsModule.instrument({
+            maxAge: 50,
+        }),
+        EffectsModule.forRoot(globalEffects),
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        RouterModule,
+        AppRoutingModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        LayoutModule,
+        MatSlideToggleModule,
+    ],
   providers: [
     {
       provide: KeycloakService,
