@@ -4,7 +4,7 @@
     <ng-container *ngTemplateOutlet="toolbarInnerRight"></ng-container>
   </mat-toolbar>
   <mat-sidenav-container autosize="true" [hasBackdrop]="smallScreen" [ngClass]="'text-' + ($theme | async)">
-    <mat-sidenav [disableClose]="!smallScreen" [(opened)]="opened" [mode]="smallScreen? 'over' : 'push'">
+    <mat-sidenav [fixedInViewport]="smallScreen" [disableClose]="!smallScreen" [(opened)]="opened" [mode]="smallScreen? 'over' : 'push'">
       <div *ngIf="!smallScreen" class="sidenav-inner-toggle" (click)="slimSidebar = !slimSidebar">
         <mat-icon [@rotate]="slimSidebar? 'default' : 'rotated'">{{ slimSidebar? 'chevron_left' : 'chevron_right' }}</mat-icon>
         <span>{{ (slimSidebar ? 'APPLICATION.GENERAL.SIDEBAR.ACTIONS.CLOSE.NAME' : 'APPLICATION.GENERAL.SIDEBAR.ACTIONS.OPEN.NAME') | translate }}</span>

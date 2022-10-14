@@ -258,3 +258,24 @@ $altTheme: (
     font-family: 'Montserrat';
   }
 }
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--primary-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--accent-lighter-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-darker-color);
+  border-radius: 20px;
+  border: 3px solid var(--accent-lighter-color);
+}

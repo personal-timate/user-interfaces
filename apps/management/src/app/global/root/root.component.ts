@@ -112,12 +112,12 @@ export class RootComponent implements OnInit {
     {
       name: 'APPLICATION.GENERAL.SIDEBAR.STATISTICS',
       icon: 'analytics',
-      subpath: '/statistics'
+      subpath: '/stats'
     },
     {
       name: 'APPLICATION.GENERAL.SIDEBAR.COMMITS',
       icon: 'commit',
-      subpath: '/commitments'
+      subpath: '/commits'
     }
   ]
 

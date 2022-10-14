@@ -5,7 +5,7 @@ export const environment: ManagementEnvironment = {
   production: true,
   authUrl: 'REPLACE_AUTH_URL',
   coreServiceUrl: 'REPLACE_CORE_SERVICE_URL',
-  realm: 'REPLACE_REALM',
+  realm: 'timate',
   clientId: 'timate:ui',
   services: {
     keycloak: KeycloakService,

@@ -103,8 +103,9 @@
     "docker-build": {
       "executor": "@sosy/nx-docker-build-plugin:build",
       "options": {
-        "dockerFile": "apps/admin-ui/Dockerfile",
-        "name": "admin-ui"
+        "dockerFile": "apps/management/Dockerfile",
+        "name": "management-ui",
+        "imagePrefix": "timate"
       }
     }
   },

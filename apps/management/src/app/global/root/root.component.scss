@@ -56,6 +56,7 @@ mat-sidenav-container {
   }
 
   mat-nav-list {
+    overflow: hidden;
     padding-top: 50px;
 
     span {
