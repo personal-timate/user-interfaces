@@ -5,7 +5,7 @@ ARG NGINX_VERSION=1.18
 FROM node:${NODE_VERSION}-alpine AS node-build
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
-COPY ../../decorate-angular-cli.js /usr/src/app/decorate-angular-cli.js
+COPY /decorate-angular-cli.js /usr/src/app/decorate-angular-cli.js
 RUN yarn install
 COPY . .
 RUN yarn run build
@@ -43,7 +43,7 @@ EXPOSE 80
 STOPSIGNAL SIGTERM
 USER 1001
 COPY --chown=1001 /apps/management/docker ./docker
-COPY --chown=1001 ../../nginx.conf /etc/nginx/nginx.conf
+COPY --chown=1001 /nginx.conf /etc/nginx/nginx.conf
 COPY --chown=1001 --from=node-build /usr/src/app/dist/* /usr/share/nginx/html
 
 ENTRYPOINT ["sh", "./docker/docker-entrypoint.sh"]
